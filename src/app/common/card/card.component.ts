@@ -2,8 +2,14 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { CustomComponent } from '../../models/custom-component';
 
-export interface CardComponentData extends CustomComponent {
-  inputs: { title: string; content: string };
+export interface CustomCardComponent extends CustomComponent {
+  inputs: CardComponentInputs;
+}
+
+export interface CardComponentInputs {
+  [key: string]: string;
+  content: string;
+  title: string;
 }
 
 @Component({
@@ -17,14 +23,14 @@ export interface CardComponentData extends CustomComponent {
 })
 export class CardComponent {
   @Input()
-  title: string = '';
-  @Input()
   content: string = '';
+  @Input()
+  title: string = '';
 
-  static MakeComponentData(title: string, content: string): CardComponentData {
+  static MakeComponentData(inputs: CardComponentInputs): CustomCardComponent {
     return {
       component: CardComponent,
-      inputs: { title, content },
+      inputs: inputs,
     };
   }
 }

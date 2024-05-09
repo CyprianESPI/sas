@@ -2,11 +2,11 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import {
   CardComponent,
-  CardComponentData,
+  CustomCardComponent,
 } from '../../common/card/card.component';
 import {
   ButtonComponent,
-  ButtonComponentData,
+  CustomButtonComponent,
 } from '../../common/button/button.component';
 import { ClickEventService } from '../../services/click-event.service';
 
@@ -23,11 +23,13 @@ import { ClickEventService } from '../../services/click-event.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FullCustomPageComponent implements OnInit {
-  button: ButtonComponentData = ButtonComponent.MakeComponentData('my btn');
-  card: CardComponentData = CardComponent.MakeComponentData(
-    'title',
-    'this is the content'
-  );
+  button: CustomButtonComponent = ButtonComponent.MakeComponentData({
+    content: 'this is a btn',
+  });
+  card: CustomCardComponent = CardComponent.MakeComponentData({
+    title: 'title',
+    content: 'this is the content',
+  });
 
   constructor(private _clickEventService: ClickEventService) {}
 
