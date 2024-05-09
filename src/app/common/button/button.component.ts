@@ -1,42 +1,40 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnInit,
+} from '@angular/core';
 import { ClickEventService } from '../../services/click-event.service';
-import { CustomComponent } from '../../models/custom-component';
 
-export interface CustomButtonComponent extends CustomComponent {
-  inputs: ButtonComponentInputs;
-}
-
-export interface ButtonComponentInputs {
-  [key: string]: string;
+export interface ButtonInputs {
   content: string;
+  toolTip: string;
 }
 
 @Component({
   selector: 'app-button',
   standalone: true,
   imports: [CommonModule],
-  template: `<button (click)="onClick()">{{ inputs.content }}</button>`,
+  template: `<button (click)="onClick()">
+      {{ myInputs.content }}
+    </button>
+    <p>{{ myInputs.toolTip }}</p>`,
   styleUrl: './button.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ButtonComponent {
+export class ButtonComponent implements OnInit {
   @Input()
-  inputs: ButtonComponentInputs = { content: '' };
+  myInputs: ButtonInputs = { content: '', toolTip: '' };
 
   constructor(private _clickEventService: ClickEventService) {}
 
-  onClick(): void {
-    // Forward the click event to the service
-    this._clickEventService.emitClickEvent(this.inputs.content);
+  ngOnInit(): void {
+    console.log(this.myInputs);
   }
 
-  static MakeComponentData(
-    inputs: ButtonComponentInputs
-  ): CustomButtonComponent {
-    return {
-      component: ButtonComponent,
-      inputs: inputs,
-    };
+  onClick(): void {
+    // Forward the click event to the service
+    this._clickEventService.emitClickEvent(this.myInputs.content);
   }
 }

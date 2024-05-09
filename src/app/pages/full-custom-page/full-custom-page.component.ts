@@ -6,26 +6,33 @@ import {
 } from '../../common/card/card.component';
 import {
   ButtonComponent,
-  CustomButtonComponent,
+  ButtonInputs,
 } from '../../common/button/button.component';
 import { ClickEventService } from '../../services/click-event.service';
+import { CustomComponent } from '../../models/custom-component';
 
 @Component({
   selector: 'app-full-custom-page',
   standalone: true,
-  imports: [CommonModule],
-  template: `<p>full-custom-page works!</p>
+  imports: [CommonModule, ButtonComponent],
+  template: `
+    <h2>Custom</h2>
     <ng-container *ngComponentOutlet="card.component; inputs: card.inputs">
     </ng-container>
     <ng-container *ngComponentOutlet="button.component; inputs: button.inputs">
-    </ng-container>`,
+    </ng-container>
+    <h2>Hardcoded</h2>
+    <app-button [myInputs]="{ content: 'abc', toolTip: 'edf' }"></app-button>
+  `,
   styleUrl: './full-custom-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FullCustomPageComponent implements OnInit {
-  button: CustomButtonComponent = ButtonComponent.MakeComponentData({
-    content: 'this is a btn',
-  });
+  buttonInputs: ButtonInputs = { content: 'new text', toolTip: 'abc' };
+  button: CustomComponent = {
+    component: ButtonComponent,
+    inputs: { myInputs: this.buttonInputs },
+  };
   card: CustomCardComponent = CardComponent.MakeComponentData({
     title: 'title',
     content: 'this is the content',
