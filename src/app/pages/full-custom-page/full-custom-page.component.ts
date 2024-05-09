@@ -4,9 +4,11 @@ import {
   CardComponent,
   CardComponentData,
 } from '../../common/card/card.component';
-import { ButtonComponent } from '../../common/button/button.component';
+import {
+  ButtonComponent,
+  ButtonComponentData,
+} from '../../common/button/button.component';
 import { ClickEventService } from '../../services/click-event.service';
-import { CustomComponent } from '../../models/custom-component';
 
 @Component({
   selector: 'app-full-custom-page',
@@ -21,18 +23,11 @@ import { CustomComponent } from '../../models/custom-component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FullCustomPageComponent implements OnInit {
-  card: CardComponentData = {
-    component: CardComponent,
-    inputs: {
-      title: 'Title',
-      content: 'This is the content of the card',
-    },
-  };
-
-  button: CustomComponent = {
-    component: ButtonComponent,
-    inputs: { content: 'Click me!' },
-  };
+  button: ButtonComponentData = ButtonComponent.MakeComponentData('my btn');
+  card: CardComponentData = CardComponent.MakeComponentData(
+    'title',
+    'this is the content'
+  );
 
   constructor(private _clickEventService: ClickEventService) {}
 

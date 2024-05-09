@@ -20,4 +20,11 @@ export class CardComponent {
   title: string = '';
   @Input()
   content: string = '';
+
+  static MakeComponentData(title: string, content: string): CardComponentData {
+    return {
+      component: CardComponent,
+      inputs: { title, content },
+    };
+  }
 }

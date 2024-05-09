@@ -1,6 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { ClickEventService } from '../../services/click-event.service';
+import { CustomComponent } from '../../models/custom-component';
+
+export interface ButtonComponentData extends CustomComponent {
+  inputs: { content: string };
+}
 
 @Component({
   selector: 'app-button',
@@ -19,5 +24,12 @@ export class ButtonComponent {
   onClick(): void {
     // Forward the click event to the service
     this._clickEventService.emitClickEvent(this.content);
+  }
+
+  static MakeComponentData(content: string): ButtonComponentData {
+    return {
+      component: ButtonComponent,
+      inputs: { content },
+    };
   }
 }
