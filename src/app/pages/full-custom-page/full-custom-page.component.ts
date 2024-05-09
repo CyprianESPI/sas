@@ -22,7 +22,7 @@ import { CustomComponent } from '../../models/custom-component';
     <ng-container *ngComponentOutlet="button.component; inputs: button.inputs">
     </ng-container>
     <h2>Hardcoded</h2>
-    <app-button [myInputs]="{ content: 'abc', toolTip: 'edf' }"></app-button>
+    <app-button [inputs]="{ content: 'abc', toolTip: 'edf' }"></app-button>
   `,
   styleUrl: './full-custom-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -31,7 +31,7 @@ export class FullCustomPageComponent implements OnInit {
   buttonInputs: ButtonInputs = { content: 'new text', toolTip: 'abc' };
   button: CustomComponent = {
     component: ButtonComponent,
-    inputs: { myInputs: this.buttonInputs },
+    inputs: { inputs: this.buttonInputs },
   };
   card: CustomCardComponent = CardComponent.MakeComponentData({
     title: 'title',

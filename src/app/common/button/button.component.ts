@@ -17,24 +17,24 @@ export interface ButtonInputs {
   standalone: true,
   imports: [CommonModule],
   template: `<button (click)="onClick()">
-      {{ myInputs.content }}
+      {{ inputs.content }}
     </button>
-    <p>{{ myInputs.toolTip }}</p>`,
+    <p>{{ inputs.toolTip }}</p>`,
   styleUrl: './button.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ButtonComponent implements OnInit {
   @Input()
-  myInputs: ButtonInputs = { content: '', toolTip: '' };
+  inputs: ButtonInputs = { content: '', toolTip: '' };
 
   constructor(private _clickEventService: ClickEventService) {}
 
   ngOnInit(): void {
-    console.log(this.myInputs);
+    console.log(this.inputs);
   }
 
   onClick(): void {
     // Forward the click event to the service
-    this._clickEventService.emitClickEvent(this.myInputs.content);
+    this._clickEventService.emitClickEvent(this.inputs.content);
   }
 }
