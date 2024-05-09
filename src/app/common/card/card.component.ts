@@ -1,5 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { CustomComponent } from '../../models/custom-component';
+
+export interface CardComponentData extends CustomComponent {
+  inputs: { title: string; content: string };
+}
 
 @Component({
   selector: 'app-card',

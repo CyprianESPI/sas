@@ -1,18 +1,12 @@
 import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import {
-  ChangeDetectionStrategy,
-  Component,
-  OnInit,
-  Type,
-} from '@angular/core';
-import { CardComponent } from '../../common/card/card.component';
+  CardComponent,
+  CardComponentData,
+} from '../../common/card/card.component';
 import { ButtonComponent } from '../../common/button/button.component';
 import { ClickEventService } from '../../services/click-event.service';
-
-interface CustomComponent {
-  component: Type<any>;
-  inputs?: Record<string, any>;
-}
+import { CustomComponent } from '../../models/custom-component';
 
 @Component({
   selector: 'app-full-custom-page',
@@ -27,9 +21,12 @@ interface CustomComponent {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FullCustomPageComponent implements OnInit {
-  card: CustomComponent = {
+  card: CardComponentData = {
     component: CardComponent,
-    inputs: { title: 'Title', content: 'This is the content of the card' },
+    inputs: {
+      title: 'Title',
+      content: 'This is the content of the card',
+    },
   };
 
   button: CustomComponent = {
@@ -49,5 +46,6 @@ export class FullCustomPageComponent implements OnInit {
 
   handleClickEvent(value: any): void {
     console.log(`handleEvent(${value})`);
+    this.card.inputs.content = value;
   }
 }
