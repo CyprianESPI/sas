@@ -1,11 +1,6 @@
 import { CommonModule } from '@angular/common';
-import {
-  ChangeDetectionStrategy,
-  Component,
-  EventEmitter,
-  Input,
-  Output,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ClickEventService } from '../../services/click-event.service';
 
 @Component({
   selector: 'app-button',
@@ -19,10 +14,10 @@ export class ButtonComponent {
   @Input()
   content: string = '';
 
-  @Output() buttonClicked = new EventEmitter<void>(); // Emitting an event without any data
+  constructor(private _clickEventService: ClickEventService) {}
 
   onClick(): void {
-    console.log(`onClick(${this.content})`);
-    this.buttonClicked.emit(); // Emitting the click event
+    // Forward the click event to the service
+    this._clickEventService.emitClickEvent(this.content);
   }
 }
