@@ -1,11 +1,7 @@
 import { CommonModule } from '@angular/common';
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Input,
-  OnInit,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { ClickEventService } from '../../services/click-event.service';
+import { ComponentData } from '../../models/component-data';
 
 export interface ButtonInputs {
   content: string;
@@ -23,18 +19,21 @@ export interface ButtonInputs {
   styleUrl: './button.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ButtonComponent implements OnInit {
+export class ButtonComponent {
   @Input()
   inputs: ButtonInputs = { content: '', toolTip: '' };
 
   constructor(private _clickEventService: ClickEventService) {}
 
-  ngOnInit(): void {
-    console.log(this.inputs);
-  }
-
   onClick(): void {
     // Forward the click event to the service
     this._clickEventService.emitClickEvent(this.inputs.content);
+  }
+
+  static Make(inputs: ButtonInputs): ComponentData {
+    return {
+      component: ButtonComponent,
+      inputs: { inputs: inputs },
+    };
   }
 }

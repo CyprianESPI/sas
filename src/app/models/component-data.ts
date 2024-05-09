@@ -1,6 +1,6 @@
 import { Type } from '@angular/core';
 
-export interface CustomComponent {
+export interface ComponentData {
   component: Type<any>;
   inputs?: Record<string, any>;
 }

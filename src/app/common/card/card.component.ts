@@ -1,13 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { CustomComponent } from '../../models/custom-component';
+import { ComponentData } from '../../models/component-data';
 
-export interface CustomCardComponent extends CustomComponent {
-  inputs: CardComponentInputs;
-}
-
-export interface CardComponentInputs {
-  [key: string]: string;
+export interface CardInputs {
   content: string;
   title: string;
 }
@@ -16,21 +11,19 @@ export interface CardComponentInputs {
   selector: 'app-card',
   standalone: true,
   imports: [CommonModule],
-  template: `<h2>{{ title }}</h2>
-    <p>{{ content }}</p>`,
+  template: `<h2>{{ inputs.title }}</h2>
+    <p>{{ inputs.content }}</p>`,
   styleUrl: './card.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CardComponent {
   @Input()
-  content: string = '';
-  @Input()
-  title: string = '';
+  inputs: CardInputs = { content: '', title: '' };
 
-  static MakeComponentData(inputs: CardComponentInputs): CustomCardComponent {
+  static Make(inputs: CardInputs): ComponentData {
     return {
       component: CardComponent,
-      inputs: inputs,
+      inputs: { inputs: inputs },
     };
   }
 }

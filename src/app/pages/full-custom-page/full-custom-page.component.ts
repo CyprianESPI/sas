@@ -1,15 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import {
-  CardComponent,
-  CustomCardComponent,
-} from '../../common/card/card.component';
-import {
-  ButtonComponent,
-  ButtonInputs,
-} from '../../common/button/button.component';
+import { CardComponent, CardInputs } from '../../common/card/card.component';
+import { ButtonComponent } from '../../common/button/button.component';
 import { ClickEventService } from '../../services/click-event.service';
-import { CustomComponent } from '../../models/custom-component';
+import { ComponentData } from '../../models/component-data';
 
 @Component({
   selector: 'app-full-custom-page',
@@ -23,17 +17,17 @@ import { CustomComponent } from '../../models/custom-component';
     </ng-container>
     <h2>Hardcoded</h2>
     <app-button [inputs]="{ content: 'abc', toolTip: 'edf' }"></app-button>
+    <h2>More stuff</h2>
   `,
   styleUrl: './full-custom-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FullCustomPageComponent implements OnInit {
-  buttonInputs: ButtonInputs = { content: 'new text', toolTip: 'abc' };
-  button: CustomComponent = {
-    component: ButtonComponent,
-    inputs: { inputs: this.buttonInputs },
-  };
-  card: CustomCardComponent = CardComponent.MakeComponentData({
+  button: ComponentData = ButtonComponent.Make({
+    content: 'new text',
+    toolTip: 'abcd',
+  });
+  card: ComponentData = CardComponent.Make({
     title: 'title',
     content: 'this is the content',
   });
@@ -41,6 +35,7 @@ export class FullCustomPageComponent implements OnInit {
   constructor(private _clickEventService: ClickEventService) {}
 
   ngOnInit(): void {
+    // Subscribe to clickEventService
     this._clickEventService.clickEvent$.subscribe({
       next: (value) => {
         this.handleClickEvent(value);
@@ -50,6 +45,8 @@ export class FullCustomPageComponent implements OnInit {
 
   handleClickEvent(value: any): void {
     console.log(`handleEvent(${value})`);
-    this.card.inputs.content = value;
+    // Update the inputs live
+    const newInputs: CardInputs = { content: value, title: value };
+    if (this.card.inputs) this.card.inputs['inputs'] = newInputs;
   }
 }
