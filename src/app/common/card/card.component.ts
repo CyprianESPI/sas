@@ -12,7 +12,6 @@ export interface CardData {
   standalone: true,
   imports: [CommonModule],
   template: `<h2>{{ data.title }}</h2>
-    <h3>{{ searchText }}</h3>
     <p>{{ data.content }}</p>`,
   styleUrl: './card.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
