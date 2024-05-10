@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { ClickEventService } from '../../services/click-event.service';
 import { ComponentData } from '../../models/component-data';
 
-export interface ButtonInputs {
+export interface ButtonData {
   content: string;
   toolTip: string;
 }
@@ -13,27 +13,27 @@ export interface ButtonInputs {
   standalone: true,
   imports: [CommonModule],
   template: `<button (click)="onClick()">
-      {{ inputs.content }}
+      {{ data.content }}
     </button>
-    <p>{{ inputs.toolTip }}</p>`,
+    <p>{{ data.toolTip }}</p>`,
   styleUrl: './button.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ButtonComponent {
   @Input()
-  inputs: ButtonInputs = { content: '', toolTip: '' };
+  data: ButtonData = { content: '', toolTip: '' };
 
   constructor(private _clickEventService: ClickEventService) {}
 
   onClick(): void {
     // Forward the click event to the service
-    this._clickEventService.emitClickEvent(this.inputs.content);
+    this._clickEventService.emitClickEvent(this.data.content);
   }
 
-  static Make(inputs: ButtonInputs): ComponentData {
+  static Make(data: ButtonData): ComponentData {
     return {
       component: ButtonComponent,
-      inputs: { inputs: inputs },
+      inputs: { data: data },
     };
   }
 }
