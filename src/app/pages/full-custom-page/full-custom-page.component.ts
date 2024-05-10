@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { CardComponent, CardInputs } from '../../common/card/card.component';
 import { ButtonComponent } from '../../common/button/button.component';
 import { ClickEventService } from '../../services/click-event.service';
-import { ComponentData } from '../../models/component-data';
+import { IComponent } from '../../models/i-component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
@@ -31,15 +31,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FullCustomPageComponent implements OnInit {
-  button: ComponentData = ButtonComponent.Make({
+  button: IComponent = ButtonComponent.Make({
     content: 'new text',
     toolTip: 'abcd',
   });
-  card: ComponentData = CardComponent.Make({
+  card: IComponent = CardComponent.Make({
     title: 'title',
     content: 'this is the content',
   });
-  components: ComponentData[] = [this.button, this.card];
+  components: IComponent[] = [this.button, this.card];
   searchText: string = '';
 
   constructor(private _clickEventService: ClickEventService) {}

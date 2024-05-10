@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { ClickEventService } from '../../services/click-event.service';
-import { ComponentData } from '../../models/component-data';
+import { IComponent } from '../../models/i-component';
 
 export interface ButtonData {
   content: string;
@@ -30,7 +30,7 @@ export class ButtonComponent {
     this._clickEventService.emitClickEvent(this.data.content);
   }
 
-  static Make(data: ButtonData): ComponentData {
+  static Make(data: ButtonData): IComponent {
     return {
       component: ButtonComponent,
       inputs: { data: data },

@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { ComponentData } from '../../models/component-data';
+import { IComponent } from '../../models/i-component';
 
 export interface CardInputs {
   content: string;
@@ -20,7 +20,7 @@ export class CardComponent {
   @Input()
   inputs: CardInputs = { content: '', title: '' };
 
-  static Make(inputs: CardInputs): ComponentData {
+  static Make(inputs: CardInputs): IComponent {
     return {
       component: CardComponent,
       inputs: { inputs: inputs },
