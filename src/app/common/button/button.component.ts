@@ -12,11 +12,9 @@ export interface ButtonData {
   selector: 'app-button',
   standalone: true,
   imports: [CommonModule],
-  template: `<button (click)="onClick()">
-      {{ data.content }}
-    </button>
-    <p>{{ data.toolTip }}</p>
-    <p>{{ searchText }}</p>`,
+  template: `<button (click)="onClick()" [title]="data.toolTip">
+    {{ data.content }}
+  </button>`,
   styleUrl: './button.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
