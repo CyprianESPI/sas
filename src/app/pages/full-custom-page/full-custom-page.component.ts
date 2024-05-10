@@ -33,7 +33,8 @@ import { IComponentDataSearchable } from '../../models/i-component';
     <h2>Hardcoded</h2>
     <app-button [data]="{ content: 'abc', toolTip: 'edf' }"></app-button>
     <h2>From list</h2>
-    @for(cmp of components; track cmp){
+    @for(cmp of components; track cmp){ @if(!searchText ||
+    cmp.search(searchText)) {
     <ng-container
       *ngComponentOutlet="
         cmp.component;
@@ -41,7 +42,7 @@ import { IComponentDataSearchable } from '../../models/i-component';
       "
     >
     </ng-container>
-    }
+    } }
   `,
   styleUrl: './full-custom-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

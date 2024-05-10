@@ -28,9 +28,10 @@ export class CardComponent {
       data: data,
       searchText: '',
       search(searchText) {
-        return Object.values(data).some(
-          (value) => value.toLowerCase() === searchText.toLowerCase()
-        );
+        const searchTextLC = searchText.toLowerCase();
+        return Object.values(data).some((value) => {
+          return (value as string).toLowerCase().includes(searchTextLC);
+        });
       },
     };
   }
