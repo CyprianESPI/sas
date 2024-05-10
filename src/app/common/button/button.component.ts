@@ -15,13 +15,16 @@ export interface ButtonData {
   template: `<button (click)="onClick()">
       {{ data.content }}
     </button>
-    <p>{{ data.toolTip }}</p>`,
+    <p>{{ data.toolTip }}</p>
+    <p>{{ searchText }}</p>`,
   styleUrl: './button.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ButtonComponent {
   @Input()
   data: ButtonData = { content: '', toolTip: '' };
+  @Input()
+  searchText: string = '';
 
   constructor(private _clickEventService: ClickEventService) {}
 

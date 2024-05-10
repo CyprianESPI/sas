@@ -1,8 +1,13 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnInit,
+} from '@angular/core';
 import { IComponent } from '../../models/i-component';
 
-export interface CardInputs {
+export interface CardData {
   content: string;
   title: string;
 }
@@ -11,19 +16,26 @@ export interface CardInputs {
   selector: 'app-card',
   standalone: true,
   imports: [CommonModule],
-  template: `<h2>{{ inputs.title }}</h2>
-    <p>{{ inputs.content }}</p>`,
+  template: `<h2>{{ data.title }}</h2>
+    <h3>{{ searchText }}</h3>
+    <p>{{ data.content }}</p>`,
   styleUrl: './card.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CardComponent {
+export class CardComponent implements OnInit {
   @Input()
-  inputs: CardInputs = { content: '', title: '' };
+  data: CardData = { content: '', title: '' };
+  @Input()
+  searchText: string = '';
 
-  static Make(inputs: CardInputs): IComponent {
+  ngOnInit(): void {
+    console.log('CardComponent', this.data, this.searchText);
+  }
+
+  static Make(data: CardData): IComponent {
     return {
       component: CardComponent,
-      inputs: { inputs: inputs },
+      inputs: { data: data },
     };
   }
 }
