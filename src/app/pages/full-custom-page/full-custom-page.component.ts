@@ -3,9 +3,9 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { CardComponent, CardData } from '../../common/card/card.component';
 import { ButtonComponent } from '../../common/button/button.component';
 import { ClickEventService } from '../../services/click-event.service';
-import { IComponent } from '../../models/i-component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MergePipe } from '../../pipes/merge.pipe';
+import { IComponentDataSearchable } from '../../models/i-component';
 
 @Component({
   selector: 'app-full-custom-page',
@@ -22,9 +22,13 @@ import { MergePipe } from '../../pipes/merge.pipe';
     <input type="text" [(ngModel)]="searchText" />
     <p>{{ searchText }}</p>
     <h2>Custom</h2>
-    <ng-container *ngComponentOutlet="card.component; inputs: card.inputs">
+    <ng-container
+      *ngComponentOutlet="card.component; inputs: { data: card.data }"
+    >
     </ng-container>
-    <ng-container *ngComponentOutlet="button.component; inputs: button.inputs">
+    <ng-container
+      *ngComponentOutlet="button.component; inputs: { data: button.data }"
+    >
     </ng-container>
     <h2>Hardcoded</h2>
     <app-button [data]="{ content: 'abc', toolTip: 'edf' }"></app-button>
@@ -33,7 +37,7 @@ import { MergePipe } from '../../pipes/merge.pipe';
     <ng-container
       *ngComponentOutlet="
         cmp.component;
-        inputs: cmp.inputs | mergePipe : { searchText: searchText }
+        inputs: { data: cmp.data, searchText: searchText }
       "
     >
     </ng-container>
@@ -43,18 +47,23 @@ import { MergePipe } from '../../pipes/merge.pipe';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FullCustomPageComponent implements OnInit {
-  button: IComponent = ButtonComponent.Make({
+  button: IComponentDataSearchable = ButtonComponent.Make({
     content: 'new text',
     toolTip: 'abcd',
   });
-  card: IComponent = CardComponent.Make({
+  card: IComponentDataSearchable = CardComponent.Make({
     title: 'title',
     content: 'this is the content',
   });
-  components: IComponent[] = [
+  components: IComponentDataSearchable[] = [
     this.button,
     this.card,
-    { component: ButtonComponent },
+    {
+      component: ButtonComponent,
+      data: {},
+      searchText: '',
+      search: () => false,
+    },
   ];
   searchText: string = '';
 
@@ -73,6 +82,6 @@ export class FullCustomPageComponent implements OnInit {
     console.log(`handleEvent(${value})`);
     // Update the inputs live
     const newData: CardData = { content: value, title: value };
-    if (this.card.inputs) this.card.inputs['data'] = newData;
+    if (this.card.data) this.card.data = newData;
   }
 }

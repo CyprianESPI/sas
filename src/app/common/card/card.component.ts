@@ -1,11 +1,6 @@
 import { CommonModule } from '@angular/common';
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Input,
-  OnInit,
-} from '@angular/core';
-import { IComponent } from '../../models/i-component';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { IComponentDataSearchable } from '../../models/i-component';
 
 export interface CardData {
   content: string;
@@ -22,20 +17,22 @@ export interface CardData {
   styleUrl: './card.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CardComponent implements OnInit {
+export class CardComponent {
   @Input()
   data: CardData = { content: '', title: '' };
   @Input()
   searchText: string = '';
 
-  ngOnInit(): void {
-    console.log('CardComponent', this.data, this.searchText);
-  }
-
-  static Make(data: CardData): IComponent {
+  static Make(data: CardData): IComponentDataSearchable {
     return {
       component: CardComponent,
-      inputs: { data: data },
+      data: data,
+      searchText: '',
+      search(searchText) {
+        return Object.values(data).some(
+          (value) => value.toLowerCase() === searchText.toLowerCase()
+        );
+      },
     };
   }
 }

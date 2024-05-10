@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { ClickEventService } from '../../services/click-event.service';
-import { IComponent } from '../../models/i-component';
+import { IComponentDataSearchable } from '../../models/i-component';
 
 export interface ButtonData {
   content: string;
@@ -33,10 +33,16 @@ export class ButtonComponent {
     this._clickEventService.emitClickEvent(this.data.content);
   }
 
-  static Make(data: ButtonData): IComponent {
+  static Make(data: ButtonData): IComponentDataSearchable {
     return {
       component: ButtonComponent,
-      inputs: { data: data },
+      data: data,
+      searchText: '',
+      search(searchText) {
+        return Object.values(data).some(
+          (value) => value.toLowerCase() === searchText.toLowerCase()
+        );
+      },
     };
   }
 }
