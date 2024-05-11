@@ -16,8 +16,7 @@ import { HttpClient } from '@angular/common/http';
   selector: 'app-show-case',
   standalone: true,
   imports: [CommonModule, HighlightAuto],
-  template: ` <h2>Example</h2>
-    <ng-container
+  template: ` <ng-container
       *ngComponentOutlet="cmp.component; inputs: { data: cmp.data }"
     ></ng-container>
     @for(source of sources; track source){
