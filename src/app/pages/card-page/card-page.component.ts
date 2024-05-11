@@ -7,22 +7,29 @@ import {
 } from '@angular/core';
 import { CardComponent } from '../../common/card/card.component';
 import { HttpClient } from '@angular/common/http';
-import { Highlight } from 'ngx-highlightjs';
+import { HighlightAuto } from 'ngx-highlightjs';
+import { ShowCaseComponent } from '../../common/show-case/show-case.component';
+import { IComponentData } from '../../models/i-component';
 
 @Component({
   selector: 'app-card-page',
   standalone: true,
-  imports: [CommonModule, CardComponent, Highlight],
-  template: `<app-card
-      [data]="{ title: 'Simple card', content: 'That displays text content' }"
-    ></app-card>
+  imports: [CommonModule, CardComponent, HighlightAuto, ShowCaseComponent],
+  template: ` <app-show-case [cmp]="cmp"></app-show-case>
 
-    <pre><code [highlight]="code" language="typescript"></code></pre>
-    <pre><code [highlight]="codeScss" language="scss"></code></pre>`,
+    <pre><code [highlightAuto]="code" ></code></pre>
+    <pre><code [highlightAuto]="codeScss" ></code></pre>`,
   styleUrl: './card-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CardPageComponent implements OnInit {
+  cmp: IComponentData = {
+    component: CardComponent,
+    data: { title: 'Simple card', content: 'That displays text content' },
+  };
+  cmpSource: string = `<app-card
+  [data]="{ title: 'Simple card', content: 'That displays text content' }"
+  ></app-card>`;
   code: string = `...`;
   codeScss: string = '...';
 
