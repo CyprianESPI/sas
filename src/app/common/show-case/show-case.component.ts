@@ -54,7 +54,7 @@ export class ShowCaseComponent implements OnInit {
         })
         .subscribe({
           next: (value) => {
-            console.log(filePath, value);
+            //console.log(filePath, value);
             source.code = value;
             this._cd.markForCheck();
           },
