@@ -4,6 +4,7 @@ import { ClickEventService } from '../../services/click-event.service';
 import { IComponentDataSearchable } from '../../models/i-component';
 
 export interface ButtonData {
+  callBack(): void;
   content: string;
   toolTip: string;
 }
@@ -12,7 +13,7 @@ export interface ButtonData {
   selector: 'app-button',
   standalone: true,
   imports: [CommonModule],
-  template: `<button (click)="onClick()" [title]="data.toolTip">
+  template: `<button (click)="data.callBack()" [title]="data.toolTip">
     {{ data.content }}
   </button>`,
   styleUrl: './button.component.scss',
@@ -20,16 +21,9 @@ export interface ButtonData {
 })
 export class ButtonComponent {
   @Input()
-  data: ButtonData = { content: '', toolTip: '' };
+  data: ButtonData = { callBack: () => {}, content: '', toolTip: '' };
   @Input()
   searchText: string = '';
-
-  constructor(private _clickEventService: ClickEventService) {}
-
-  onClick(): void {
-    // Forward the click event to the service
-    this._clickEventService.emitClickEvent(this.data.content);
-  }
 
   static Make(data: ButtonData): IComponentDataSearchable {
     return {
@@ -39,7 +33,10 @@ export class ButtonComponent {
       search(searchText) {
         const searchTextLC = searchText.toLowerCase();
         return Object.values(data).some((value) => {
-          return (value as string).toLowerCase().includes(searchTextLC);
+          // Check string type
+          if (typeof value === 'string' || value instanceof String)
+            return value.toLowerCase().includes(searchTextLC);
+          return false;
         });
       },
     };

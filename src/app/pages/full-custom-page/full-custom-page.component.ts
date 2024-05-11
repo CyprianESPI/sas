@@ -38,7 +38,11 @@ import { IComponentDataSearchable } from '../../models/i-component';
       [data]="{ content: 'generated from DOM', title: 'DOM card' }"
     ></app-card>
     <app-button
-      [data]="{ content: 'click DOM btn', toolTip: 'DOM' }"
+      [data]="{
+        callBack: getCallBack('click DOM btn'),
+        content: 'click DOM btn',
+        toolTip: 'DOM'
+      }"
     ></app-button>
   `,
   styleUrl: './full-custom-page.component.scss',
@@ -46,6 +50,9 @@ import { IComponentDataSearchable } from '../../models/i-component';
 })
 export class FullCustomPageComponent implements OnInit {
   button: IComponentDataSearchable = ButtonComponent.Make({
+    callBack: () => {
+      this.handleClickEvent('click TS btn');
+    },
     content: 'click TS btn',
     toolTip: 'TS',
   });
@@ -81,6 +88,12 @@ export class FullCustomPageComponent implements OnInit {
         this.handleClickEvent(value);
       },
     });
+  }
+
+  getCallBack(value: string) {
+    return () => {
+      this.handleClickEvent(value);
+    };
   }
 
   handleClickEvent(value: any): void {

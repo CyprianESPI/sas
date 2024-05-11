@@ -9,7 +9,9 @@
 <footer>
   <app-toolbar
     [data]="{
-      buttons: [{ content: 'home', toolTip: '' }],
+      buttons: [
+        { callBack: getRoutingCallBack('home'), content: 'home', toolTip: '' }
+      ],
       subTitle: '',
       title: ''
     }"

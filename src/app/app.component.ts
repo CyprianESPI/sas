@@ -22,4 +22,10 @@ export class AppComponent {
       },
     });
   }
+
+  getRoutingCallBack(value: string) {
+    return () => {
+      this._router.navigate([value]);
+    };
+  }
 }
