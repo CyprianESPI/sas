@@ -10,19 +10,19 @@ import { IComponentData } from '../../models/i-component';
 import { ButtonComponent } from '../button/button.component';
 import { ISourceCode } from '../../models/i-source-code';
 import { HighlightAuto } from 'ngx-highlightjs';
-import { SourceCodePipe } from '../../pipes/source-code.pipe';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-show-case',
   standalone: true,
-  imports: [CommonModule, HighlightAuto, SourceCodePipe],
-  template: `<ng-container
+  imports: [CommonModule, HighlightAuto],
+  template: ` <h2>Example</h2>
+    <ng-container
       *ngComponentOutlet="cmp.component; inputs: { data: cmp.data }"
     ></ng-container>
     @for(source of sources; track source){
     <h3>{{ source.name }}</h3>
-    <pre><code [highlightAuto]="source.code ?? ''" ></code></pre>
+    <pre><code [highlightAuto]="source.code ?? ''"></code></pre>
     }`,
   styleUrl: './show-case.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
