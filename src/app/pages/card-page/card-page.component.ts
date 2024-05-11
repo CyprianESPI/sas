@@ -14,10 +14,10 @@ import { ISourceCode } from '../../models/i-source-code';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CardPageComponent {
-  cmp: IComponentData = {
-    component: CardComponent,
-    data: { title: 'Simple card', content: 'That displays text content' },
-  };
+  cmp: IComponentData = CardComponent.Make({
+    title: 'Simple card',
+    content: 'That displays text content',
+  });
   sources: ISourceCode[] = [
     {
       name: 'example.html',
