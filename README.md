@@ -2,7 +2,7 @@
 
 Live link:
 
-- https://smol-ang-snippets.netlify.app/home
+- https://smol-ang-snippets.netlify.app
 
 ## Notes
 
