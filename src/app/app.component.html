@@ -1,6 +1,5 @@
 <header>
-  <h2>{{ title }}</h2>
-  <p>{{ getUrl() }}</p>
+  <app-toolbar [data]="{ subTitle: subTitle, title: title }"></app-toolbar>
 </header>
 <main>
   <router-outlet></router-outlet>
