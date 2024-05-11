@@ -19,10 +19,10 @@ import { HttpClient } from '@angular/common/http';
   template: ` <ng-container
       *ngComponentOutlet="cmp.component; inputs: { data: cmp.data }"
     ></ng-container>
-    @for(source of sources; track source){
-    <details>
-      <summary>{{ source.name }}</summary>
-      <pre><code [highlightAuto]="source.code ?? ''"></code></pre>
+    @for(source of sources; track source; let first=$first){
+    <details [open]="first">
+      <summary>{{ first ? 'html' : source.name }}</summary>
+      <pre><code [highlightAuto]="source.code ?? ''" [languages]="['html','scss','typescript']"></code></pre>
     </details>
     }`,
   styleUrl: './show-case.component.scss',
