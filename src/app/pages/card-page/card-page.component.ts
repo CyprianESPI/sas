@@ -17,12 +17,14 @@ import { Highlight } from 'ngx-highlightjs';
       [data]="{ title: 'Simple card', content: 'That displays text content' }"
     ></app-card>
 
-    <pre><code [highlight]="code" language="typescript"></code></pre>`,
+    <pre><code [highlight]="code" language="typescript"></code></pre>
+    <pre><code [highlight]="codeScss" language="scss"></code></pre>`,
   styleUrl: './card-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CardPageComponent implements OnInit {
   code: string = `...`;
+  codeScss: string = '...';
 
   constructor(
     private _httpClient: HttpClient,
@@ -31,13 +33,23 @@ export class CardPageComponent implements OnInit {
 
   ngOnInit(): void {
     this._httpClient
-      .get('assets/card.component.txt', {
+      .get('assets/raw_code/common/card/card.component.ts', {
         responseType: 'text',
       })
       .subscribe({
         next: (value) => {
-          console.log(value);
           this.code = value;
+          this._cd.markForCheck();
+        },
+      });
+
+    this._httpClient
+      .get('assets/raw_code/common/card/card.component.scss', {
+        responseType: 'text',
+      })
+      .subscribe({
+        next: (value) => {
+          this.codeScss = value;
           this._cd.markForCheck();
         },
       });
