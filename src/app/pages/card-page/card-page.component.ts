@@ -10,15 +10,13 @@ import { HttpClient } from '@angular/common/http';
 import { HighlightAuto } from 'ngx-highlightjs';
 import { ShowCaseComponent } from '../../common/show-case/show-case.component';
 import { IComponentData } from '../../models/i-component';
+import { ISourceCode } from '../../models/i-source-code';
 
 @Component({
   selector: 'app-card-page',
   standalone: true,
   imports: [CommonModule, CardComponent, HighlightAuto, ShowCaseComponent],
-  template: ` <app-show-case [cmp]="cmp"></app-show-case>
-
-    <pre><code [highlightAuto]="code" ></code></pre>
-    <pre><code [highlightAuto]="codeScss" ></code></pre>`,
+  template: `<app-show-case [cmp]="cmp" [sources]="sources"></app-show-case>`,
   styleUrl: './card-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -27,11 +25,20 @@ export class CardPageComponent implements OnInit {
     component: CardComponent,
     data: { title: 'Simple card', content: 'That displays text content' },
   };
-  cmpSource: string = `<app-card
-  [data]="{ title: 'Simple card', content: 'That displays text content' }"
-  ></app-card>`;
-  code: string = `...`;
-  codeScss: string = '...';
+  sources: ISourceCode[] = [
+    {
+      name: 'example.html',
+      code: `<app-card [data]="{ title: 'Simple card',
+      content: 'That displays text content' }">
+      </app-card>`,
+    },
+    {
+      name: 'common/card/card.component.ts',
+    },
+    {
+      name: 'common/card/card.component.scss',
+    },
+  ];
 
   constructor(
     private _httpClient: HttpClient,
@@ -45,7 +52,7 @@ export class CardPageComponent implements OnInit {
       })
       .subscribe({
         next: (value) => {
-          this.code = value;
+          //this.code = value;
           this._cd.markForCheck();
         },
       });
@@ -56,7 +63,7 @@ export class CardPageComponent implements OnInit {
       })
       .subscribe({
         next: (value) => {
-          this.codeScss = value;
+          //this.codeScss = value;
           this._cd.markForCheck();
         },
       });
