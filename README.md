@@ -1,5 +1,9 @@
 # Sas
 
+Live link:
+
+- https://smol-ang-snippets.netlify.app/home
+
 ## Notes
 
 To see dist/ folder, we must run ng build as ng serve is only in memory
