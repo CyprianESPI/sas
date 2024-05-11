@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { IComponentData } from '../../models/i-component';
-import { ClickEventService } from '../../services/click-event.service';
+import { ButtonComponent, ButtonData } from '../button/button.component';
 
 export interface ToolbarData {
+  buttons: ButtonData[];
   subTitle: string;
   title: string;
 }
@@ -11,22 +12,20 @@ export interface ToolbarData {
 @Component({
   selector: 'app-toolbar',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ButtonComponent],
   template: `<h2>{{ data.title }}</h2>
-    <p>{{ data.subTitle }}</p>`,
+    <p>{{ data.subTitle }}</p>
+    <span>
+      @for(btn of data.buttons;track btn){
+      <app-button [data]="btn"></app-button>
+      }
+    </span>`,
   styleUrl: './toolbar.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ToolbarComponent {
   @Input()
-  data: ToolbarData = { subTitle: '', title: '' };
-
-  constructor(private _clickEventService: ClickEventService) {}
-
-  onClick(): void {
-    // Forward the click event to the service
-    this._clickEventService.emitClickEvent(this.data.title);
-  }
+  data: ToolbarData = { buttons: [], subTitle: '', title: '' };
 
   static Make(data: ToolbarData): IComponentData {
     return {

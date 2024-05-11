@@ -1,9 +1,17 @@
 <header>
-  <app-toolbar [data]="{ subTitle: subTitle, title: title }"></app-toolbar>
+  <app-toolbar
+    [data]="{ buttons: [], subTitle: subTitle, title: title }"
+  ></app-toolbar>
 </header>
 <main>
   <router-outlet></router-outlet>
 </main>
 <footer>
-  <a [routerLink]="['home']">home</a>
+  <app-toolbar
+    [data]="{
+      buttons: [{ content: 'home', toolTip: '' }],
+      subTitle: '',
+      title: ''
+    }"
+  ></app-toolbar>
 </footer>
