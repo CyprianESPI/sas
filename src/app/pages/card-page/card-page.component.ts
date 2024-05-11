@@ -17,7 +17,7 @@ import { Highlight } from 'ngx-highlightjs';
       [data]="{ title: 'Simple card', content: 'That displays text content' }"
     ></app-card>
 
-    <pre><code [highlight]="code" language="ts"></code></pre>`,
+    <pre><code [highlight]="code" language="typescript"></code></pre>`,
   styleUrl: './card-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
