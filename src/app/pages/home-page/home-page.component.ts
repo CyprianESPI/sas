@@ -9,10 +9,14 @@ import { codeSnippetsRoutes } from '../../app.routes';
   imports: [CommonModule, RouterLink],
   template: `
     <h2>Welcome</h2>
-    @for(route of codeSnippetsRoutes; track route){
-    <!-- Absolute links start with '/' -->
-    <a [routerLink]="'/' + route.path">{{ route.path }}</a>
-    }
+    <ol>
+      @for(route of codeSnippetsRoutes; track route){
+      <li>
+        <!-- Absolute links start with '/' -->
+        <a [routerLink]="'/' + route.path">{{ route.path }}</a>
+      </li>
+      }
+    </ol>
   `,
   styleUrl: './home-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
