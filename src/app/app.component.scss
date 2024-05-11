@@ -5,6 +5,11 @@
   width: 100%;
 }
 
+header {
+  display: flex;
+  align-items: end;
+}
+
 main {
   flex-grow: 1;
   overflow: auto;
