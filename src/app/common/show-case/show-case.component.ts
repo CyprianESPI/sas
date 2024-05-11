@@ -21,8 +21,10 @@ import { HttpClient } from '@angular/common/http';
       *ngComponentOutlet="cmp.component; inputs: { data: cmp.data }"
     ></ng-container>
     @for(source of sources; track source){
-    <h3>{{ source.name }}</h3>
-    <pre><code [highlightAuto]="source.code ?? ''"></code></pre>
+    <details>
+      <summary>{{ source.name }}</summary>
+      <pre><code [highlightAuto]="source.code ?? ''"></code></pre>
+    </details>
     }`,
   styleUrl: './show-case.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

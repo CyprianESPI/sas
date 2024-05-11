@@ -5,3 +5,22 @@
 code {
   text-wrap: balance;
 }
+pre {
+  margin: 0;
+}
+
+// Style the details
+details {
+  margin-top: 1rem;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+}
+
+summary {
+  font-weight: bold;
+  padding: 0.5rem;
+}
+
+details[open] summary {
+  border-bottom: 1px solid #aaa;
+}
