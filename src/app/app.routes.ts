@@ -4,8 +4,10 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { CardPageComponent } from './pages/card-page/card-page.component';
 import { ToolbarPageComponent } from './pages/toolbar-page/toolbar-page.component';
 import { ButtonPageComponent } from './pages/button-page/button-page.component';
+import { AnchorPageComponent } from './pages/anchor-page/anchor-page.component';
 
 export const codeSnippetsRoutes: Routes = [
+  { path: 'anchor', component: AnchorPageComponent },
   { path: 'button', component: ButtonPageComponent },
   { path: 'card', component: CardPageComponent },
   { path: 'toolbar', component: ToolbarPageComponent },
