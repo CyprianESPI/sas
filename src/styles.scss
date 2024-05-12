@@ -1,8 +1,10 @@
 /* Add code highlight from resources:
-- https://www.npmjs.com/package/ngx-highlightjs
-- https://github.com/highlightjs/highlight.js/tree/main/src/styles
+    - https://www.npmjs.com/package/ngx-highlightjs
+    - https://github.com/highlightjs/highlight.js/tree/main/src/styles
+Playground:
+    -https://highlightjs.org/demo
 */
-@use "../node_modules/highlight.js/styles/default.css";
+@use "../node_modules/highlight.js/styles/github-dark-dimmed.css";
 
 /* You can add global styles to this file, and also import other style files */
 // Reset body and ensure full height/width
