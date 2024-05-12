@@ -16,7 +16,7 @@ export const homeRoutes: Routes = [
   { path: 'home', component: HomePageComponent },
   { path: 'index', component: HomePageComponent },
   { path: 'index.html', component: HomePageComponent },
-  { path: '/', component: HomePageComponent },
+  { path: '', component: HomePageComponent },
 ];
 
 export const routes: Routes = [
