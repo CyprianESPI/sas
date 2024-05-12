@@ -24,9 +24,6 @@ export class AnchorPageComponent {
     ></app-anchor>`,
     },
     {
-      name: 'models/i-component.ts',
-    },
-    {
       name: 'common/anchor/anchor.component.ts',
     },
     {
