@@ -1,3 +1,5 @@
+$border-radius: 12px;
+
 :host {
   display: block;
 }
@@ -5,22 +7,33 @@
 code {
   text-wrap: balance;
 }
+
 pre {
   margin: 0;
+  code.hljs {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: $border-radius;
+    border-bottom-right-radius: $border-radius;
+  }
 }
 
 // Style the details
-details {
-  margin-top: 1rem;
-  border: 1px solid #aaa;
-  border-radius: 4px;
-}
-
 summary {
+  cursor: pointer;
   font-weight: bold;
   padding: 0.5rem;
+  transition: padding 150ms ease-out;
+}
+
+details {
+  background-color: hsl(222, 24%, 22%);
+  border-radius: $border-radius;
+  color: hsl(222, 14%, 69%);
+  //color: hsl(222, 9%, 98%);
+  margin-top: 1rem;
 }
 
 details[open] summary {
-  border-bottom: 1px solid #aaa;
+  padding-bottom: 1rem;
 }
