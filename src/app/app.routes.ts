@@ -12,8 +12,15 @@ export const codeSnippetsRoutes: Routes = [
   { path: 'full-custom', component: FullCustomPageComponent },
 ];
 
+export const homeRoutes: Routes = [
+  { path: 'home', component: HomePageComponent },
+  { path: 'index', component: HomePageComponent },
+  { path: 'index.html', component: HomePageComponent },
+  { path: '/', component: HomePageComponent },
+];
+
 export const routes: Routes = [
   ...codeSnippetsRoutes,
-  { path: 'home', component: HomePageComponent },
+  ...homeRoutes,
   { path: '**', redirectTo: 'home', pathMatch: 'full' },
 ];
