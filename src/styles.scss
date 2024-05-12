@@ -2,7 +2,7 @@
 - https://www.npmjs.com/package/ngx-highlightjs
 - https://github.com/highlightjs/highlight.js/tree/main/src/styles
 */
-@import "../node_modules/highlight.js/styles/default.css";
+@use "../node_modules/highlight.js/styles/default.css";
 
 /* You can add global styles to this file, and also import other style files */
 // Reset body and ensure full height/width
