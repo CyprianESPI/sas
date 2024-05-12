@@ -1,13 +1,17 @@
 :host {
   display: block;
-  margin: 5px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
   border-radius: 5px;
-  padding: 2px 16px;
+  padding: 8px;
 }
 
 /* On mouse-over, add a deeper shadow */
 :host:hover {
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
+}
+
+* {
+  margin: 0;
+  padding: 0;
 }
