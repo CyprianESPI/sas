@@ -49,9 +49,6 @@ export class ButtonPageComponent {
       </app-button>`,
     },
     {
-      name: 'models/i-component.ts',
-    },
-    {
       name: 'common/button/button.component.ts',
     },
     {

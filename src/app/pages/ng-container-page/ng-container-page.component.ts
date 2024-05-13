@@ -95,6 +95,21 @@ export class NgContainerPageComponent {
       }
       `,
     },
+    {
+      name: 'models/i-component.ts',
+    },
+    {
+      name: 'common/card/card.component.ts',
+    },
+    {
+      name: 'common/card/card.component.scss',
+    },
+    {
+      name: 'common/button/button.component.ts',
+    },
+    {
+      name: 'common/button/button.component.scss',
+    },
   ];
 
   handleClick(value: string) {

@@ -26,9 +26,6 @@ export class CardPageComponent {
       </app-card>`,
     },
     {
-      name: 'models/i-component.ts',
-    },
-    {
       name: 'common/card/card.component.ts',
     },
     {

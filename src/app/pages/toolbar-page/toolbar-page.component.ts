@@ -33,9 +33,6 @@ export class ToolbarPageComponent {
     ></app-toolbar>`,
     },
     {
-      name: 'models/i-component.ts',
-    },
-    {
       name: 'common/toolbar/toolbar.component.ts',
     },
     {
