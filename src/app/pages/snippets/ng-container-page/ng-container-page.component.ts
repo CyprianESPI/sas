@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ButtonComponent } from '../../common/button/button.component';
-import { CardComponent, CardData } from '../../common/card/card.component';
-import { IComponentData } from '../../models/i-component';
-import { ISourceCode } from '../../models/i-source-code';
-import { ShowCaseCodeComponent } from '../../common/show-case-code/show-case-code.component';
+import { ButtonComponent } from '../../../common/button/button.component';
+import { CardComponent, CardData } from '../../../common/card/card.component';
+import { IComponentData } from '../../../models/i-component';
+import { ISourceCode } from '../../../models/i-source-code';
+import { ShowCaseCodeComponent } from '../../../common/show-case-code/show-case-code.component';
 
 @Component({
   selector: 'app-ng-container-page',

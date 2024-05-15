@@ -1,12 +1,12 @@
 import { Routes } from '@angular/router';
-import { FullCustomPageComponent } from './pages/full-custom-page/full-custom-page.component';
+import { FullCustomPageComponent } from './pages/snippets/full-custom-page/full-custom-page.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
-import { CardPageComponent } from './pages/card-page/card-page.component';
-import { ToolbarPageComponent } from './pages/toolbar-page/toolbar-page.component';
-import { ButtonPageComponent } from './pages/button-page/button-page.component';
-import { AnchorPageComponent } from './pages/anchor-page/anchor-page.component';
-import { NgContainerPageComponent } from './pages/ng-container-page/ng-container-page.component';
-import { NgContainerSearchablePageComponent } from './pages/ng-container-searchable-page/ng-container-searchable-page.component';
+import { CardPageComponent } from './pages/snippets/card-page/card-page.component';
+import { ToolbarPageComponent } from './pages/snippets/toolbar-page/toolbar-page.component';
+import { ButtonPageComponent } from './pages/snippets/button-page/button-page.component';
+import { AnchorPageComponent } from './pages/snippets/anchor-page/anchor-page.component';
+import { NgContainerPageComponent } from './pages/snippets/ng-container-page/ng-container-page.component';
+import { NgContainerSearchablePageComponent } from './pages/snippets/ng-container-searchable-page/ng-container-searchable-page.component';
 import { SnippetsPageComponent } from './pages/snippets-page/snippets-page.component';
 import { AboutPageComponent } from './pages/about-page/about-page.component';
 

@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { CardComponent, CardData } from '../../common/card/card.component';
-import { ButtonComponent } from '../../common/button/button.component';
-import { ClickEventService } from '../../services/click-event.service';
+import { CardComponent, CardData } from '../../../common/card/card.component';
+import { ButtonComponent } from '../../../common/button/button.component';
+import { ClickEventService } from '../../../services/click-event.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { IComponentDataSearchable } from '../../models/i-component';
+import { IComponentDataSearchable } from '../../../models/i-component';
 
 @Component({
   selector: 'app-full-custom-page',

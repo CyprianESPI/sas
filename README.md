@@ -6,7 +6,6 @@ Live link:
 
 ## Todo
 
-- Add more pages (about/etc)
 - Add canvas page
 - Wrap LOC
 

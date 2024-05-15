@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { IComponentDataSearchable } from '../../models/i-component';
-import { CardComponent } from '../../common/card/card.component';
-import { ShowCaseCodeComponent } from '../../common/show-case-code/show-case-code.component';
-import { ISourceCode } from '../../models/i-source-code';
+import { IComponentDataSearchable } from '../../../models/i-component';
+import { CardComponent } from '../../../common/card/card.component';
+import { ShowCaseCodeComponent } from '../../../common/show-case-code/show-case-code.component';
+import { ISourceCode } from '../../../models/i-source-code';
 
 @Component({
   selector: 'app-ng-container-searchable-page',

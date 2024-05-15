@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { CardComponent } from '../../common/card/card.component';
-import { ShowCaseComponent } from '../../common/show-case/show-case.component';
-import { IComponentData } from '../../models/i-component';
-import { ISourceCode } from '../../models/i-source-code';
+import { CardComponent } from '../../../common/card/card.component';
+import { ShowCaseComponent } from '../../../common/show-case/show-case.component';
+import { IComponentData } from '../../../models/i-component';
+import { ISourceCode } from '../../../models/i-source-code';
 
 @Component({
   selector: 'app-card-page',

@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ISourceCode } from '../../models/i-source-code';
-import { ShowCaseCodeComponent } from '../../common/show-case-code/show-case-code.component';
-import { AnchorComponent } from '../../common/anchor/anchor.component';
+import { ISourceCode } from '../../../models/i-source-code';
+import { ShowCaseCodeComponent } from '../../../common/show-case-code/show-case-code.component';
+import { AnchorComponent } from '../../../common/anchor/anchor.component';
 
 @Component({
   selector: 'app-anchor-page',

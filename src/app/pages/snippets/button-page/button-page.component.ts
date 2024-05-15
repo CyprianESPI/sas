@@ -3,10 +3,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
   ButtonComponent,
   ButtonData,
-} from '../../common/button/button.component';
-import { IComponentData } from '../../models/i-component';
-import { ISourceCode } from '../../models/i-source-code';
-import { ShowCaseComponent } from '../../common/show-case/show-case.component';
+} from '../../../common/button/button.component';
+import { IComponentData } from '../../../models/i-component';
+import { ISourceCode } from '../../../models/i-source-code';
+import { ShowCaseComponent } from '../../../common/show-case/show-case.component';
 
 @Component({
   selector: 'app-button-page',

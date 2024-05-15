@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { IComponentData } from '../../models/i-component';
-import { ISourceCode } from '../../models/i-source-code';
-import { ToolbarComponent } from '../../common/toolbar/toolbar.component';
-import { ShowCaseComponent } from '../../common/show-case/show-case.component';
+import { IComponentData } from '../../../models/i-component';
+import { ISourceCode } from '../../../models/i-source-code';
+import { ToolbarComponent } from '../../../common/toolbar/toolbar.component';
+import { ShowCaseComponent } from '../../../common/show-case/show-case.component';
 
 @Component({
   selector: 'app-toolbar-page',
