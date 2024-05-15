@@ -6,6 +6,7 @@ import { ToolbarPageComponent } from './pages/toolbar-page/toolbar-page.componen
 import { ButtonPageComponent } from './pages/button-page/button-page.component';
 import { AnchorPageComponent } from './pages/anchor-page/anchor-page.component';
 import { NgContainerPageComponent } from './pages/ng-container-page/ng-container-page.component';
+import { NgContainerSearchablePageComponent } from './pages/ng-container-searchable-page/ng-container-searchable-page.component';
 
 export const codeSnippetsRoutes: Routes = [
   { path: 'anchor', component: AnchorPageComponent },
@@ -13,6 +14,10 @@ export const codeSnippetsRoutes: Routes = [
   { path: 'card', component: CardPageComponent },
   { path: 'toolbar', component: ToolbarPageComponent },
   { path: 'ng-container', component: NgContainerPageComponent },
+  {
+    path: 'ng-container-searchable',
+    component: NgContainerSearchablePageComponent,
+  },
   { path: 'full-custom', component: FullCustomPageComponent },
 ];
 
