@@ -10,7 +10,13 @@
   <app-toolbar
     [data]="{
       buttons: [
-        { callBack: getRoutingCallBack('home'), content: 'Home', toolTip: '' }
+        { callBack: getRoutingCallBack('home'), content: 'Home', toolTip: '' },
+        {
+          callBack: getRoutingCallBack('snippets'),
+          content: 'Snippets',
+          toolTip: ''
+        },
+        { callBack: getRoutingCallBack('about'), content: 'About', toolTip: '' }
       ],
       subTitle: '',
       title: ''
