@@ -4,6 +4,13 @@ Live link:
 
 - https://smol-ang-snippets.netlify.app
 
+## Todo
+
+- Fix netlify routing
+- Add more pages (about/etc)
+- Add canvas page
+- Wrap LOC
+
 ## Notes
 
 To see dist/ folder, we must run ng build as ng serve is only in memory
