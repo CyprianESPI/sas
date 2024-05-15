@@ -1,6 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { Route, RouterOutlet } from '@angular/router';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+} from '@angular/core';
+import { Route, Router, RouterOutlet } from '@angular/router';
 import { snippetsRoutes } from '../../app.routes';
 import { AnchorComponent } from '../../common/anchor/anchor.component';
 
@@ -9,7 +13,8 @@ import { AnchorComponent } from '../../common/anchor/anchor.component';
   standalone: true,
   imports: [CommonModule, AnchorComponent, RouterOutlet],
   template: `
-    <h2>Snippets</h2>
+    <h2 style="text-transform: capitalize;">{{ urlEnd }}</h2>
+    @if(urlEnd === codeSnippetsPath){
     <ol>
       @for(route of codeSnippetsRoutes; track route){
       <li>
@@ -20,11 +25,24 @@ import { AnchorComponent } from '../../common/anchor/anchor.component';
       </li>
       }
     </ol>
+    }
     <router-outlet></router-outlet>
   `,
   styleUrl: './snippets-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SnippetsPageComponent {
+  codeSnippetsPath = snippetsRoutes[0].path ?? '';
   codeSnippetsRoutes: Route[] = snippetsRoutes[0].children ?? [];
+  urlEnd: string = '';
+
+  constructor(private _cd: ChangeDetectorRef, private _router: Router) {
+    this._router.events.subscribe({
+      next: (value) => {
+        this.urlEnd =
+          this._router.url.split('/').pop() ?? this.codeSnippetsPath;
+        this._cd.markForCheck();
+      },
+    });
+  }
 }
