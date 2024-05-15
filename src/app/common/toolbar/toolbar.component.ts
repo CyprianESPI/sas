@@ -15,7 +15,7 @@ export interface ToolbarData {
   imports: [CommonModule, ButtonComponent],
   template: `<h2>{{ data.title }}</h2>
     <p>{{ data.subTitle }}</p>
-    <span>
+    <span style="display: flex; justify-content: space-around; flex-grow:1;">
       @for(btn of data.buttons;track btn){
       <app-button [data]="btn"></app-button>
       }
