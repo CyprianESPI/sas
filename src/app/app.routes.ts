@@ -9,6 +9,7 @@ import { NgContainerPageComponent } from './pages/snippets/ng-container-page/ng-
 import { NgContainerSearchablePageComponent } from './pages/snippets/ng-container-searchable-page/ng-container-searchable-page.component';
 import { SnippetsPageComponent } from './pages/snippets-page/snippets-page.component';
 import { AboutPageComponent } from './pages/about-page/about-page.component';
+import { CanvasPolygonPageComponent } from './pages/snippets/canvas-polygon-page/canvas-polygon-page.component';
 
 export const aboutRoutes: Routes = [
   { path: 'about', component: AboutPageComponent, title: 'SAS | About' },
@@ -29,6 +30,7 @@ export const snippetsRoutes: Routes = [
         path: 'ng-container-searchable',
         component: NgContainerSearchablePageComponent,
       },
+      { path: 'canvas-polygon', component: CanvasPolygonPageComponent },
       { path: 'full-custom', component: FullCustomPageComponent },
     ],
   },
