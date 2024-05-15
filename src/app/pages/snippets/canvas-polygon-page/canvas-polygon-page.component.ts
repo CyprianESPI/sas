@@ -8,6 +8,7 @@ import { CanvasPolygonComponent } from '../../../common/canvas/canvas-polygon/ca
   standalone: true,
   imports: [CommonModule, CanvasPolygonComponent],
   template: `<app-canvas-polygon
+    class="resizeable"
     [data]="{ polygon: polygon }"
   ></app-canvas-polygon>`,
   styleUrl: './canvas-polygon-page.component.scss',
@@ -16,10 +17,11 @@ import { CanvasPolygonComponent } from '../../../common/canvas/canvas-polygon/ca
 export class CanvasPolygonPageComponent {
   polygon: IPolygon = {
     points: [
-      { x: 10, y: 10 },
-      { x: 20, y: 20 },
-      { x: 10, y: 40 },
-      { x: 10, y: 10 },
+      { x: 0, y: 0 },
+      { x: 3, y: 1 },
+      { x: 5, y: 4 },
+      { x: 2, y: 6 },
+      { x: -1, y: 4 },
     ],
   };
 }

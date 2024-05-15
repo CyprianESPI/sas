@@ -53,17 +53,41 @@ export class CanvasPolygonComponent implements AfterViewInit {
 
   private draw() {
     if (!this.ctx) return;
-    this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
-    this.ctx.save();
-    this.ctx.translate(this.offsetX, this.offsetY);
-    this.ctx.scale(this.scale, this.scale);
 
-    const width = this.ctx.canvas.width;
-    const height = this.ctx.canvas.height;
+    const canvas = this.ctx.canvas;
+    const points = this.data.polygon.points;
+
+    if (points.length === 0) return;
+
+    // Find the bounding box of the polygon
+    let minX = points[0].x;
+    let maxX = points[0].x;
+    let minY = points[0].y;
+    let maxY = points[0].y;
+
+    for (const point of points) {
+      minX = Math.min(minX, point.x);
+      maxX = Math.max(maxX, point.x);
+      minY = Math.min(minY, point.y);
+      maxY = Math.max(maxY, point.y);
+    }
+
+    // Calculate scaling factors
+    const scaleX = canvas.width / (maxX - minX);
+    const scaleY = canvas.height / (maxY - minY);
+    const scale = Math.min(scaleX, scaleY);
+
+    // Calculate offset to center the drawing
+    const offsetX = (canvas.width - (maxX - minX) * scale) / 2 - minX * scale;
+    const offsetY = (canvas.height - (maxY - minY) * scale) / 2 - minY * scale;
+
+    this.ctx.clearRect(0, 0, canvas.width, canvas.height);
+    this.ctx.save();
+    this.ctx.translate(offsetX, offsetY);
+    this.ctx.scale(scale, scale);
 
     // Example drawing code
     this.ctx.fillStyle = 'rgba(100, 100, 200, 0.5)';
-    const points = this.data.polygon.points;
     points.forEach((point, index) => {
       if (index === 0) {
         this.ctx?.beginPath();
