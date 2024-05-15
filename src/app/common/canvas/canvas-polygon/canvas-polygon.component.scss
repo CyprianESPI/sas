@@ -1,4 +1,7 @@
+@import "../../colors.scss";
+
 :host {
+  border: 2px solid $c-a1;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -7,6 +10,9 @@
 }
 
 canvas {
+  border: 2px solid $c-p1;
   max-width: 100%;
+  min-width: 1%;
+  min-height: 1%;
   aspect-ratio: 1;
 }
