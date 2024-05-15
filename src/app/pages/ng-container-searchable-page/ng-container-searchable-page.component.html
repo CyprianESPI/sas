@@ -1,0 +1,20 @@
+<input
+  type="text"
+  [(ngModel)]="searchText"
+  (ngModelChange)="updateFilteredComponents()"
+  placeholder="Search"
+/>
+<h2>{{ filteredComponents.length }} components</h2>
+@for(cmp of filteredComponents; track cmp){
+<!-- Wrap into a div to ensure margin style is propagated -->
+<div class="wrapper">
+  <ng-container
+    *ngComponentOutlet="
+      cmp.component;
+      inputs: { data: cmp.data, searchText: searchText }
+    "
+  >
+  </ng-container>
+</div>
+}
+<app-show-case-code [sources]="sources"></app-show-case-code>
