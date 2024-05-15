@@ -37,6 +37,11 @@
                 "glob": "**/*",
                 "input": "src/app/models/",
                 "output": "/assets/raw_code/models/"
+              },
+              {
+                "glob": "_redirects",
+                "input": "src",
+                "output": "/"
               }
             ],
             "styles": [
