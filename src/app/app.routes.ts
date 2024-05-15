@@ -8,9 +8,10 @@ import { AnchorPageComponent } from './pages/anchor-page/anchor-page.component';
 import { NgContainerPageComponent } from './pages/ng-container-page/ng-container-page.component';
 import { NgContainerSearchablePageComponent } from './pages/ng-container-searchable-page/ng-container-searchable-page.component';
 import { SnippetsPageComponent } from './pages/snippets-page/snippets-page.component';
+import { AboutPageComponent } from './pages/about-page/about-page.component';
 
 export const aboutRoutes: Routes = [
-  { path: 'about', component: HomePageComponent, title: 'SAS | About' },
+  { path: 'about', component: AboutPageComponent, title: 'SAS | About' },
 ];
 
 export const snippetsRoutes: Routes = [
