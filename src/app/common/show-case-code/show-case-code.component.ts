@@ -14,8 +14,8 @@ import { UrlEndPipe } from '../../pipes/url-end.pipe';
 @Component({
   selector: 'app-show-case-code',
   standalone: true,
-  template: ` @for(source of sources; track source; let first=$first){
-    <details [open]="first">
+  template: ` @for(source of sources; track source){
+    <details open="true">
       <summary>{{ source.name | appUrlEnd }}</summary>
       <pre><code [highlightAuto]="source.code ?? ''" [languages]="['html','scss','typescript']"></code></pre>
     </details>
