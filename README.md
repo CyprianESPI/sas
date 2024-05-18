@@ -6,10 +6,15 @@ Live link:
 
 ## Todo
 
-- Improve home page. Make it easier to understand
-- Add github iframe to ReadMe in about
 - Refactor invidual snippets pages to recursively search for dependencies
-- Try 3D display (three.js ? other ?)
+- Refactor to unify style/colors
+- Add backend for visits/likes/copy metrics
+- Update Snippets page to show iframes showcasing components
+- Add copy code button
+- Add icons
+- Explore 3D display
+   - Import 3D model
+   - Pan camera
 
 ## Notes
 
