@@ -9,19 +9,20 @@ import {
 import { ISourceCode } from '../../models/i-source-code';
 import { HighlightAuto } from 'ngx-highlightjs';
 import { HttpClient } from '@angular/common/http';
+import { UrlEndPipe } from '../../pipes/url-end.pipe';
 
 @Component({
   selector: 'app-show-case-code',
   standalone: true,
-  imports: [CommonModule, HighlightAuto],
-  template: ` @for(source of sources; track source; let first=$first){
-    <details [open]="first">
-      <summary>{{ first ? 'html' : source.name }}</summary>
+  template: ` @for(source of sources; track source){
+    <details open="true">
+      <summary>{{ source.name | appUrlEnd }}</summary>
       <pre><code [highlightAuto]="source.code ?? ''" [languages]="['html','scss','typescript']"></code></pre>
     </details>
     }`,
   styleUrl: './show-case-code.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [CommonModule, HighlightAuto, UrlEndPipe],
 })
 export class ShowCaseCodeComponent implements OnInit {
   @Input()
