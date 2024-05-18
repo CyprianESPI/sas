@@ -7,6 +7,7 @@ import {
 import { Route, Router, RouterOutlet } from '@angular/router';
 import { snippetsRoutes } from '../../app.routes';
 import { AnchorComponent } from '../../common/anchor/anchor.component';
+import { UrlEndPipe } from '../../pipes/url-end.pipe';
 
 @Component({
   selector: 'app-snippets-page',
@@ -37,10 +38,10 @@ export class SnippetsPageComponent {
   urlEnd: string = '';
 
   constructor(private _cd: ChangeDetectorRef, private _router: Router) {
+    const getUrlEndPipe = new UrlEndPipe();
     this._router.events.subscribe({
       next: (value) => {
-        this.urlEnd =
-          this._router.url.split('/').pop() ?? this.codeSnippetsPath;
+        this.urlEnd = getUrlEndPipe.transform(this._router.url);
         this._cd.markForCheck();
       },
     });
