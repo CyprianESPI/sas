@@ -1,0 +1,14 @@
+@import "../../colors.scss";
+
+:host {
+  border: 2px solid $c-a1;
+  display: flex;
+  place-items: stretch;
+  padding: 2rem;
+}
+
+svg {
+  border: 2px solid $c-p1;
+  height: 100%;
+  width: 100%;
+}
