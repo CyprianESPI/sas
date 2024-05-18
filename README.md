@@ -6,8 +6,10 @@ Live link:
 
 ## Todo
 
-- Add canvas page
-- Wrap LOC
+- Improve home page. Make it easier to understand
+- Add github iframe to ReadMe in about
+- Refactor invidual snippets pages to recursively search for dependencies
+- Try 3D display (three.js ? other ?)
 
 ## Notes
 
