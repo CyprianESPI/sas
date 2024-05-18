@@ -23,6 +23,7 @@ import { UrlEndPipe } from '../../pipes/url-end.pipe';
         <app-anchor
           [data]="{ content: route.path ?? '', path: route.path ?? '' }"
         ></app-anchor>
+        <iframe [src]="url + '/' + route.path" [title]="route.path"></iframe>
       </li>
       }
     </ol>
@@ -35,12 +36,14 @@ import { UrlEndPipe } from '../../pipes/url-end.pipe';
 export class SnippetsPageComponent {
   codeSnippetsPath = snippetsRoutes[0].path ?? '';
   codeSnippetsRoutes: Route[] = snippetsRoutes[0].children ?? [];
+  url: string = '';
   urlEnd: string = '';
 
   constructor(private _cd: ChangeDetectorRef, private _router: Router) {
     const getUrlEndPipe = new UrlEndPipe();
     this._router.events.subscribe({
       next: (value) => {
+        this.url = this._router.url;
         this.urlEnd = getUrlEndPipe.transform(this._router.url);
         this._cd.markForCheck();
       },
