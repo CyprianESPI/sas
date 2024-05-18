@@ -17,7 +17,7 @@ import { UrlEndPipe } from '../../pipes/url-end.pipe';
   template: ` @for(source of sources; track source){
     <details open="true">
       <summary>{{ source.name | appUrlEnd }}</summary>
-      <pre><code [highlightAuto]="source.code ?? ''" [languages]="['html','scss','typescript']"></code></pre>
+      <pre><code [highlightAuto]="source.code ?? ''" [languages]="['bash','html','scss','typescript']"></code></pre>
     </details>
     }`,
   styleUrl: './show-case-code.component.scss',
