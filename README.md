@@ -2,7 +2,7 @@
 
 Live link:
 
-- https://smol-ang-snippets.netlify.app
+- https://small-angular-snippets.netlify.app
 
 ## Todo
 
