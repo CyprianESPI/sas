@@ -10,8 +10,6 @@ Live link:
 - Refactor to unify style/colors
 - Add backend for visits/likes/copy metrics
 - Update Snippets page to show iframes showcasing components
-- Add copy code button
-- Add icons
 - Explore 3D display
    - Import 3D model
    - Pan camera
