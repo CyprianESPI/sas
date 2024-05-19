@@ -11,6 +11,7 @@ import { HighlightAuto } from 'ngx-highlightjs';
 import { HttpClient } from '@angular/common/http';
 import { UrlEndPipe } from '../../pipes/url-end.pipe';
 import { MatIconComponent } from '../mat-icon/mat-icon.component';
+import { ButtonFabComponent } from '../button-fab/button-fab.component';
 
 @Component({
   selector: 'app-show-case-code',
@@ -23,17 +24,16 @@ import { MatIconComponent } from '../mat-icon/mat-icon.component';
             style="vertical-align: middle;"
             [data]="{
               name: source.hidden ? 'expand_more' : 'expand_less',
-              size: 24
             }"
           ></app-mat-icon>
           <span>{{ source.name | appUrlEnd }}</span>
         </span>
 
-        <app-mat-icon
+        <app-button-fab
           style="vertical-align: middle;"
-          [data]="{ name: 'content_copy', size: 20 }"
+          [data]="{ iconName: 'content_copy' }"
           (click)="copyToClipboard(source.code ?? '')"
-        ></app-mat-icon>
+        ></app-button-fab>
       </span>
       <pre
         [class]="source.hidden ? 'hidden' : ''"
@@ -42,7 +42,13 @@ import { MatIconComponent } from '../mat-icon/mat-icon.component';
     }`,
   styleUrl: './show-case-code.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, HighlightAuto, UrlEndPipe, MatIconComponent],
+  imports: [
+    CommonModule,
+    HighlightAuto,
+    UrlEndPipe,
+    ButtonFabComponent,
+    MatIconComponent,
+  ],
 })
 export class ShowCaseCodeComponent implements OnInit {
   @Input()

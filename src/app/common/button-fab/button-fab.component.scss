@@ -1,3 +1,20 @@
+@import "../colors.scss";
+
+* {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+  cursor: pointer;
+}
+
 :host {
+  color: $c-p1;
+  border-radius: 50%;
+  padding: 5px;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 25px;
+  width: 25px;
 }
