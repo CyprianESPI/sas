@@ -6,22 +6,23 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   standalone: true,
   imports: [CommonModule],
   template: `<div class="banner">
-      <h1>About Smol Angular Snippets</h1>
+      <h1>About Small Angular Snippets</h1>
     </div>
     <div class="content">
       <section id="mission">
         <h2>Mission Statement</h2>
         <p>
-          Smol Angular Snippets is a personal project dedicated to experimenting
-          with Angular and showcasing various code snippets. The goal is to
-          provide simple, reusable components that demonstrate the power and
-          flexibility of Angular, all without relying on any UI frameworks.
+          Small Angular Snippets is a personal project dedicated to
+          experimenting with Angular and showcasing various code snippets. The
+          goal is to provide simple, reusable components that demonstrate the
+          power and flexibility of Angular, all without relying on any UI
+          frameworks.
         </p>
       </section>
       <section id="story">
         <h2>The Story</h2>
         <p>
-          Smol Angular Snippets began as a sandbox for exploring Angular's
+          Small Angular Snippets began as a sandbox for exploring Angular's
           capabilities and sharing the resulting code with the developer
           community. As new challenges and ideas emerged, the project evolved
           into a collection of practical, bite-sized snippets designed to make
@@ -39,7 +40,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
             </div>
           </div>
           <p>
-            With a passion for coding and a love for Angular, I created Smol
+            With a passion for coding and a love for Angular, I created Small
             Angular Snippets to experiment with new ideas and share my findings
             with others. This project is a reflection of my journey through the
             Angular ecosystem.
@@ -49,7 +50,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <section id="vision">
         <h2>Vision</h2>
         <p>
-          Looking ahead, Smol Angular Snippets aims to continuously expand its
+          Looking ahead, Small Angular Snippets aims to continuously expand its
           library of components, offering more complex and varied examples. The
           vision is to build a resource that inspires and aids developers in
           their Angular projects, fostering a community of sharing and learning.
@@ -59,7 +60,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <h2>Testimonials</h2>
         <blockquote>
           <p>
-            "Smol Angular Snippets has been a fantastic resource for learning
+            "Small Angular Snippets has been a fantastic resource for learning
             Angular. The straightforward examples have helped me understand key
             concepts and improve my own projects." — Developer Name
           </p>
@@ -80,7 +81,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </section>
     </div>
     <div class="footer">
-      <p>&copy; 2024 Smol Angular Snippets. All rights reserved.</p>
+      <p>&copy; 2024 Small Angular Snippets. All rights reserved.</p>
     </div>`,
   styleUrl: './about-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
