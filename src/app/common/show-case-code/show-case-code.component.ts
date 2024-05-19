@@ -16,7 +16,10 @@ import { UrlEndPipe } from '../../pipes/url-end.pipe';
   standalone: true,
   template: ` @for(source of sources; track source){
     <details open="true">
-      <summary>{{ source.name | appUrlEnd }}</summary>
+      <summary>
+        {{ source.name | appUrlEnd }}
+        <button (click)="copyToClipboard(source.code ?? '')">Copy code</button>
+      </summary>
       <pre><code [highlightAuto]="source.code ?? ''" [languages]="['bash','html','scss','typescript']"></code></pre>
     </details>
     }`,
@@ -53,5 +56,9 @@ export class ShowCaseCodeComponent implements OnInit {
           },
         });
     });
+  }
+
+  copyToClipboard(text: string): void {
+    navigator.clipboard.writeText(text);
   }
 }
