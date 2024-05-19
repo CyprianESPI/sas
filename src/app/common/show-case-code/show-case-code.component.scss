@@ -1,7 +1,26 @@
-$border-radius: 12px;
+$border-radius: 0px; //12px;
 
 :host {
   display: block;
+}
+
+.hidden {
+  height: 0px;
+  overflow: hidden;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+
+  background-color: hsl(222, 24%, 22%);
+  border-top-left-radius: $border-radius;
+  border-top-right-radius: $border-radius;
+  color: hsl(222, 14%, 69%);
+  //color: hsl(222, 9%, 98%);
+  margin-top: 1rem;
+  padding: 0.5rem;
 }
 
 code {
@@ -16,24 +35,4 @@ pre {
     border-bottom-left-radius: $border-radius;
     border-bottom-right-radius: $border-radius;
   }
-}
-
-// Style the details
-summary {
-  cursor: pointer;
-  font-weight: bold;
-  padding: 0.5rem;
-  transition: padding 150ms ease-out;
-}
-
-details {
-  background-color: hsl(222, 24%, 22%);
-  border-radius: $border-radius;
-  color: hsl(222, 14%, 69%);
-  //color: hsl(222, 9%, 98%);
-  margin-top: 1rem;
-}
-
-details[open] summary {
-  padding-bottom: 0.75rem;
 }

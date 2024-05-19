@@ -10,22 +10,39 @@ import { ISourceCode } from '../../models/i-source-code';
 import { HighlightAuto } from 'ngx-highlightjs';
 import { HttpClient } from '@angular/common/http';
 import { UrlEndPipe } from '../../pipes/url-end.pipe';
+import { MatIconComponent } from '../mat-icon/mat-icon.component';
 
 @Component({
   selector: 'app-show-case-code',
   standalone: true,
   template: ` @for(source of sources; track source){
-    <details open="true">
-      <summary>
-        {{ source.name | appUrlEnd }}
-        <button (click)="copyToClipboard(source.code ?? '')">Copy code</button>
-      </summary>
-      <pre><code [highlightAuto]="source.code ?? ''" [languages]="['bash','html','scss','typescript']"></code></pre>
-    </details>
+    <div>
+      <span class="header-container">
+        <span style="flex-grow: 1;" (click)="source.hidden = !source.hidden">
+          <app-mat-icon
+            style="vertical-align: middle;"
+            [data]="{
+              name: source.hidden ? 'expand_more' : 'expand_less',
+              size: 24
+            }"
+          ></app-mat-icon>
+          <span>{{ source.name | appUrlEnd }}</span>
+        </span>
+
+        <app-mat-icon
+          style="vertical-align: middle;"
+          [data]="{ name: 'content_copy', size: 20 }"
+          (click)="copyToClipboard(source.code ?? '')"
+        ></app-mat-icon>
+      </span>
+      <pre
+        [class]="source.hidden ? 'hidden' : ''"
+      ><code [highlightAuto]="source.code ?? ''" [languages]="['bash','html','scss','typescript']"></code></pre>
+    </div>
     }`,
   styleUrl: './show-case-code.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, HighlightAuto, UrlEndPipe],
+  imports: [CommonModule, HighlightAuto, UrlEndPipe, MatIconComponent],
 })
 export class ShowCaseCodeComponent implements OnInit {
   @Input()
