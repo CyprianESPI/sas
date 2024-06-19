@@ -36,15 +36,10 @@ import { FormsModule } from '@angular/forms';
 export class CircularRangeInputComponent {
   angle = model<number>(0);
   radius = 45;
-  circumference = 2 * Math.PI * this.radius;
   isDragging = false;
 
-  get strokeOffset() {
-    return this.circumference - (this.angle() / 360) * this.circumference;
-  }
-
   get handleTransform() {
-    const angleInRadians = this.angle() * (Math.PI / 180);
+    const angleInRadians = -this.angle() * (Math.PI / 180);
     const x = 0 + this.radius * Math.cos(angleInRadians);
     const y = 0 + this.radius * Math.sin(angleInRadians);
     return `translate(${x} ${y})`;
@@ -91,7 +86,7 @@ export class CircularRangeInputComponent {
     const centerY = rect.top + rect.height / 2;
     const dx = event.clientX - centerX;
     const dy = event.clientY - centerY;
-    let angle = Math.atan2(dy, dx) * (180 / Math.PI);
+    let angle = -Math.atan2(dy, dx) * (180 / Math.PI);
     angle = (angle + 360) % 360; // Normalize the angle
     this.angle.set(angle);
   }
