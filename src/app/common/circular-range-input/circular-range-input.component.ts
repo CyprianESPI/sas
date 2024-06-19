@@ -86,6 +86,9 @@ export class CircularRangeInputComponent {
     const dy = event.clientY - centerY;
     let angle = -Math.atan2(dy, dx) * (180 / Math.PI);
     angle = (angle + 360) % 360; // Normalize the angle
+    const step = 0.5;
+    const steps = Math.round(angle / step);
+    angle = steps * step;
     this.angle.set(angle);
   }
 }
