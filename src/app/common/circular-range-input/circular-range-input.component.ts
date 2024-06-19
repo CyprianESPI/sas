@@ -1,5 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  HostListener,
+} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -23,6 +27,8 @@ import { FormsModule } from '@angular/forms';
         r="5"
         class="handle"
         [attr.transform]="handleTransform"
+        (mousedown)="onMouseDown($event)"
+        (touchstart)="onTouchStart($event)"
       ></circle>
     </svg>
     <input
@@ -41,6 +47,7 @@ export class CircularRangeInputComponent {
   angle = 0;
   radius = 45;
   circumference = 2 * Math.PI * this.radius;
+  isDragging = false;
 
   get strokeOffset() {
     return this.circumference - (this.angle / 360) * this.circumference;
@@ -56,5 +63,49 @@ export class CircularRangeInputComponent {
   onInputChange(event: Event) {
     const input = event.target as HTMLInputElement;
     this.angle = Number(input.value);
+  }
+
+  onMouseDown(event: MouseEvent) {
+    this.isDragging = true;
+    this.updateAngleFromEvent(event);
+  }
+
+  onTouchStart(event: TouchEvent) {
+    this.isDragging = true;
+    this.updateAngleFromEvent(event.touches[0]);
+  }
+
+  @HostListener('window:mousemove', ['$event'])
+  onMouseMove(event: MouseEvent) {
+    if (this.isDragging) {
+      this.updateAngleFromEvent(event);
+    }
+  }
+
+  @HostListener('window:touchmove', ['$event'])
+  onTouchMove(event: TouchEvent) {
+    if (this.isDragging) {
+      this.updateAngleFromEvent(event.touches[0]);
+    }
+  }
+
+  @HostListener('window:mouseup')
+  onMouseUp() {
+    this.isDragging = false;
+  }
+
+  @HostListener('window:touchend')
+  onTouchEnd() {
+    this.isDragging = false;
+  }
+
+  private updateAngleFromEvent(event: MouseEvent | Touch) {
+    const rect = (event.target as SVGElement).getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    const dx = event.clientX - centerX;
+    const dy = event.clientY - centerY;
+    const angle = Math.atan2(dy, dx) * (180 / Math.PI) + 90;
+    this.angle = (angle + 360) % 360;
   }
 }

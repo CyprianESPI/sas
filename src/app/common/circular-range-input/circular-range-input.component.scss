@@ -26,5 +26,6 @@
 .handle {
   fill: #007bff;
   stroke: none;
-  transition: transform 0.3s;
+  cursor: pointer;
+  touch-action: none; /* Disable touch event handling on the handle */
 }
