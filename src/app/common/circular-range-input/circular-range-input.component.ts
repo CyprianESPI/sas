@@ -54,9 +54,9 @@ export class CircularRangeInputComponent {
   }
 
   get handleTransform() {
-    const angleInRadians = (this.angle - 90) * (Math.PI / 180);
-    const x = 50 + this.radius * Math.cos(angleInRadians);
-    const y = 50 + this.radius * Math.sin(angleInRadians);
+    const angleInRadians = this.angle * (Math.PI / 180);
+    const x = 0 + this.radius * Math.cos(angleInRadians);
+    const y = 0 + this.radius * Math.sin(angleInRadians);
     return `translate(${x} ${y})`;
   }
 
@@ -107,9 +107,7 @@ export class CircularRangeInputComponent {
     const dx = event.clientX - centerX;
     const dy = event.clientY - centerY;
     let angle = Math.atan2(dy, dx) * (180 / Math.PI);
-    if (angle < 0) {
-      angle += 360; // Normalize the angle
-    }
+    angle = (angle + 360) % 360; // Normalize the angle
     this.angle = angle;
   }
 }
