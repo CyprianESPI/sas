@@ -1,7 +1,8 @@
-.circular-range-input {
-  position: relative;
-  width: 200px;
-  height: 200px;
+:host {
+  display: grid;
+  > * {
+    grid-area: 1/1;
+  }
 }
 
 .circle-svg {
