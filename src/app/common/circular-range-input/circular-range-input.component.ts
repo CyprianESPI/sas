@@ -22,15 +22,7 @@ import { FormsModule } from '@angular/forms';
       <circle
         cx="50"
         cy="50"
-        r="45"
-        class="progress-circle"
-        [attr.stroke-dasharray]="circumference"
-        [attr.stroke-dashoffset]="strokeOffset"
-      ></circle>
-      <circle
-        cx="50"
-        cy="50"
-        r="5"
+        r="4"
         class="handle"
         [attr.transform]="handleTransform"
         (mousedown)="onMouseDown($event)"
