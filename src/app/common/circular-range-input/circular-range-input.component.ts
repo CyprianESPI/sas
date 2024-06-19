@@ -101,13 +101,15 @@ export class CircularRangeInputComponent {
 
   private updateAngleFromEvent(event: MouseEvent | Touch) {
     const svg = (event.target as SVGElement).closest('svg');
-    if (!svg) return;
-    const rect = svg.getBoundingClientRect();
+    const rect = svg!.getBoundingClientRect();
     const centerX = rect.left + rect.width / 2;
     const centerY = rect.top + rect.height / 2;
     const dx = event.clientX - centerX;
     const dy = event.clientY - centerY;
-    const angle = Math.atan2(dy, dx) * (180 / Math.PI);
-    this.angle = (angle + 90 + 360) % 360; // Adjust for the initial 90 degrees rotation
+    let angle = Math.atan2(dy, dx) * (180 / Math.PI);
+    if (angle < 0) {
+      angle += 360; // Normalize the angle
+    }
+    this.angle = angle;
   }
 }
