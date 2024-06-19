@@ -1,0 +1,30 @@
+.circular-range-input {
+  position: relative;
+  width: 200px;
+  height: 200px;
+}
+
+.circle-svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.background-circle {
+  fill: none;
+  stroke: #e6e6e6;
+  stroke-width: 10;
+}
+
+.progress-circle {
+  fill: none;
+  stroke: #007bff;
+  stroke-width: 10;
+  transition: stroke-dashoffset 0.3s;
+}
+
+.handle {
+  fill: #007bff;
+  stroke: none;
+  transition: transform 0.3s;
+}
