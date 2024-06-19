@@ -1,0 +1,25 @@
+:host {
+  display: grid;
+  place-items: center;
+  > * {
+    grid-area: 1/1;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.background-circle {
+  fill: none;
+  stroke: #e6e6e6;
+  stroke-width: 4;
+}
+
+.handle {
+  fill: #007bff;
+  stroke: none;
+  cursor: pointer;
+  touch-action: none; /* Disable touch event handling on the handle */
+}
