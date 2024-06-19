@@ -20,16 +20,10 @@ export class CircularRangeInputPageComponent {
       code: '<app-circular-range-input></app-circular-range-input>',
     },
     {
-      name: 'common/common/circular-range-input.component.ts',
+      name: 'common/circular-range-input/circular-range-input.component.ts',
     },
     {
-      name: 'common/common/circular-range-input.component.scss',
-    },
-    {
-      name: 'models/i-polygon.ts',
-    },
-    {
-      name: 'models/i-point.ts',
+      name: 'common/circular-range-input/circular-range-input.component.scss',
     },
   ];
 }
