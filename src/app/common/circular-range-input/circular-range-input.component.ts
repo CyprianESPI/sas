@@ -3,9 +3,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   HostListener,
-  Input,
   model,
-  signal,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
@@ -35,8 +33,8 @@ import { FormsModule } from '@angular/forms';
 })
 export class CircularRangeInputComponent {
   angle = model<number>(0);
-  radius = 45;
-  isDragging = false;
+  private radius = 45;
+  private isDragging = false;
 
   get handleTransform() {
     const angleInRadians = -this.angle() * (Math.PI / 180);
