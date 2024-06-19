@@ -3,6 +3,9 @@ import {
   ChangeDetectionStrategy,
   Component,
   HostListener,
+  Input,
+  model,
+  signal,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
@@ -10,41 +13,46 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-circular-range-input',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  template: ` <svg viewBox="0 0 100 100" class="circle-svg">
-    <circle cx="50" cy="50" r="45" class="background-circle"></circle>
-    <circle
-      cx="50"
-      cy="50"
-      r="45"
-      class="progress-circle"
-      [attr.stroke-dasharray]="circumference"
-      [attr.stroke-dashoffset]="strokeOffset"
-    ></circle>
-    <circle
-      cx="50"
-      cy="50"
-      r="5"
-      class="handle"
-      [attr.transform]="handleTransform"
-      (mousedown)="onMouseDown($event)"
-      (touchstart)="onTouchStart($event)"
-    ></circle>
-  </svg>`,
+  template: `
+    <div>
+      <ng-content></ng-content>
+    </div>
+    <svg viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="45" class="background-circle"></circle>
+      <circle
+        cx="50"
+        cy="50"
+        r="45"
+        class="progress-circle"
+        [attr.stroke-dasharray]="circumference"
+        [attr.stroke-dashoffset]="strokeOffset"
+      ></circle>
+      <circle
+        cx="50"
+        cy="50"
+        r="5"
+        class="handle"
+        [attr.transform]="handleTransform"
+        (mousedown)="onMouseDown($event)"
+        (touchstart)="onTouchStart($event)"
+      ></circle>
+    </svg>
+  `,
   styleUrl: './circular-range-input.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CircularRangeInputComponent {
-  angle = 0;
+  angle = model<number>(0);
   radius = 45;
   circumference = 2 * Math.PI * this.radius;
   isDragging = false;
 
   get strokeOffset() {
-    return this.circumference - (this.angle / 360) * this.circumference;
+    return this.circumference - (this.angle() / 360) * this.circumference;
   }
 
   get handleTransform() {
-    const angleInRadians = this.angle * (Math.PI / 180);
+    const angleInRadians = this.angle() * (Math.PI / 180);
     const x = 0 + this.radius * Math.cos(angleInRadians);
     const y = 0 + this.radius * Math.sin(angleInRadians);
     return `translate(${x} ${y})`;
@@ -93,6 +101,6 @@ export class CircularRangeInputComponent {
     const dy = event.clientY - centerY;
     let angle = Math.atan2(dy, dx) * (180 / Math.PI);
     angle = (angle + 360) % 360; // Normalize the angle
-    this.angle = angle;
+    this.angle.set(angle);
   }
 }
